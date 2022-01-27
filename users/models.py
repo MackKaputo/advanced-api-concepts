@@ -12,3 +12,7 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
+class Course(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.CharField(max_length=200)
+    number_of_objectives = models.IntegerField()

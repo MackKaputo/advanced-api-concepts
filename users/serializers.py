@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Course
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,3 +20,12 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+
+class CourseSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=200)
+    description = serializers.CharField(max_length=200)
+    number_of_objectives = serializers.IntegerField()
+    id = serializers.IntegerField()
+    # class Meta:
+    #     model = Course
+    #     fields = ["id", "name", "description", "number_of_objectives"]

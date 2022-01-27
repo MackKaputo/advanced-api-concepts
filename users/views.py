@@ -4,8 +4,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
-from .serializers import UserSerializer
-from .models import User
+from .serializers import UserSerializer, CourseSerializer
+from .models import User, Course
 #JWT token import
 import jwt, datetime
 
@@ -83,3 +83,12 @@ class LogoutView(APIView):
         }
 
         return response
+
+class CourseView(APIView):
+    def get(self, request):
+        my_course = Course.objects.filter(id = 2).first()
+        serialized_course = CourseSerializer(my_course)
+
+        return Response(serialized_course.data)
+
+        
