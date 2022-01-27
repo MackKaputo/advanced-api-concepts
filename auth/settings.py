@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+#!: setup environment variables
 import environ
 #initialize environment variables
 env = environ.Env()

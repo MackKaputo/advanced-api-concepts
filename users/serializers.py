@@ -21,11 +21,17 @@ class UserSerializer(serializers.ModelSerializer):
 
         return instance
 
+class StudentSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=200)
+    surname = serializers.CharField(max_length=200)
+    age = serializers.IntegerField()
+
 class CourseSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=200)
     description = serializers.CharField(max_length=200)
     number_of_objectives = serializers.IntegerField()
     id = serializers.IntegerField()
+    students = StudentSerializer(required=False, many=True)
     # class Meta:
     #     model = Course
     #     fields = ["id", "name", "description", "number_of_objectives"]

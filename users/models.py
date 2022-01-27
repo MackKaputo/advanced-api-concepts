@@ -12,7 +12,21 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
+class Student(models.Model):
+    name = models.CharField(max_length=200)
+    surname = models.CharField(max_length=200)
+    age = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.name}"
+
 class Course(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     number_of_objectives = models.IntegerField()
+    students = models.ManyToManyField(Student)
+
+    def __str__(self):
+        return f"{self.name}"
+
+

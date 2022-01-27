@@ -84,11 +84,13 @@ class LogoutView(APIView):
 
         return response
 
-class CourseView(APIView):
+class CoursesView(APIView):
     def get(self, request):
-        my_course = Course.objects.filter(id = 2).first()
-        serialized_course = CourseSerializer(my_course)
+        # my_course = Course.objects.filter(id = 2).first()
+        # serialized_course = CourseSerializer(my_course)
+        courses = Course.objects.all()
+        serialized_courses = CourseSerializer(courses, many=True) #many=True for more than one object
 
-        return Response(serialized_course.data)
+        return Response(serialized_courses.data)
 
         
